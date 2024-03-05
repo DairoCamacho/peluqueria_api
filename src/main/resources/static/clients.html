@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Dairo Camacho, Edwin Cuervo" />
+    <meta name="description" content="Peluquería Alejandra" />
+    <meta name="copyright" content="Dairo Camacho, Edwin Cuervo" />
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <title>Clients</title>
+    <!--Importar Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Importar CDN de Estilos de Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <!-- Mis estilos -->
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <table class="table" id="clientsTable" width="100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>phone</th>
+                    <th>Type</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Dairo</td>
+                    <td>Camacho</td>
+                    <td>123</td>
+                    <td>ocasional</td>
+                    <td>
+                        <button class="btn waves-effect waves-light" type="button" name="edit">Edit
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button class="btn waves-effect waves-light" type="button" name="delete">Delete
+                            <i class="material-icons">delete</i>
+                        </button>
+                        <!--funcionalidad JS -> Call the table jQuery plugin
+    $(document).ready(function(){
+        $('#clientsTable').ClientsTable()
+    });
+    -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </main>
+
+    <footer></footer>
+
+    <!-- JavaScript de Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- JavaScript propio -->
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

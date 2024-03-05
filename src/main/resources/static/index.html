@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Dairo Camacho, Edwin Cuervo" />
+  <meta name="description" content="Peluquería Alejandra" />
+  <meta name="copyright" content="Dairo Camacho, Edwin Cuervo" />
+  <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+  <title>Peluquería Alejandra</title>
+  <!--Importar Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!-- Importar CDN de Estilos de Materialize -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <!-- Mis estilos -->
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body class="content">
+  <header>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <div class="switch">
+              <label>
+                Off
+                <input type="checkbox" />
+                <span class="lever"></span>
+                On
+              </label>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ear" width="24" height="24"
+                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M6 10a7 7 0 1 1 13 3.6a10 10 0 0 1 -2 2a8 8 0 0 0 -2 3a4.5 4.5 0 0 1 -6.8 1.4" />
+                <path d="M10 10a3 3 0 1 1 5 2.2" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- NAVBAR HAMBURGUESA OCULTO -->
+    <ul class="sidenav" id="mobile-demo">
+      <li>
+        <div class="switch">
+          <label>
+            Off
+            <input type="checkbox" />
+            <span class="lever"></span>
+            On
+          </label>
+        </div>
+      </li>
+      <li>
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ear" width="24" height="24"
+            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M6 10a7 7 0 1 1 13 3.6a10 10 0 0 1 -2 2a8 8 0 0 0 -2 3a4.5 4.5 0 0 1 -6.8 1.4" />
+            <path d="M10 10a3 3 0 1 1 5 2.2" />
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </header>
+
+  <main>
+    <div class="row">
+      <!-- SECCIÓN TITULO -->
+      <div class="col s12 m6">
+
+        <div class="row center-align">
+          <div class="col s1 m2 l5"></div>
+          <div class="col s10 m10 l7 center-align">
+            <h1>Peluquería Alejandra</h1>
+            <img class="responsive-img" src="./img/peluqueria_medio_300x200.png" alt="" />
+          </div>
+
+          <div class="col s1 hide-on-med-and-up container"></div>
+        </div>
+
+      </div>
+
+      <!-- SECCIÓN FORMULARIO -->
+
+      <div class="col s12 m6">
+
+        <div class="row section center-align">
+          <div class="col s1 hide-on-med-and-up"></div>
+
+          <div class="col s10 m10 l7 center-align">
+            <div class="input-field  center-align">
+              <input placeholder="Email" id="email" type="email" class="validate" />
+              <input placeholder="Contraseña" id="password" type="password" class="validate" />
+              <div class="section"></div>
+              <div class="center-align">
+                <button class="boton-primario btn waves-effect" type="submit" name="login">
+                  Iniciar sesión
+                </button>
+              </div>
+            </div>
+
+            <div class="section center-align">
+              <a href="recovery.html">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <div class=" center-align">
+              <a class="boton-secundario btn waves-effect" href="register.html">Crear nueva cuenta</a>
+            </div>
+          </div>
+
+          <div class="col s1 m2 l5"></div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer></footer>
+
+  <!-- JavaScript de Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- JavaScript propio -->
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
