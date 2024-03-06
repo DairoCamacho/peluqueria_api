@@ -2,10 +2,7 @@ package com.unaux.dairo.api.model;
 
 import com.unaux.dairo.api.dto.PersonCreateDto;
 import com.unaux.dairo.api.dto.PersonUpdateDto;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -21,7 +18,7 @@ import java.time.LocalDate;
 public class Person {
 
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     @Column(name = "last_name")
@@ -54,7 +51,7 @@ public class Person {
         }
     }
 
-    public void deactivate() {
+    public void inactivate() {
         this.isActive = false;
     }
 }

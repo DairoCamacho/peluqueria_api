@@ -2,6 +2,7 @@ package com.unaux.dairo.api.controller;
 
 import com.unaux.dairo.api.dto.PersonCreateDto;
 import com.unaux.dairo.api.dto.PersonFindDto;
+import com.unaux.dairo.api.dto.PersonResponseDto;
 import com.unaux.dairo.api.dto.PersonUpdateDto;
 import com.unaux.dairo.api.model.Person;
 import com.unaux.dairo.api.repository.PersonRepository;
@@ -12,6 +13,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("/person")
@@ -21,13 +25,13 @@ public class PersonController {
     private PersonRepository personRepository;
 
     @PostMapping
-    public void createPerson (@RequestBody @Valid PersonCreateDto personCreateDto){
-        personRepository.save(new Person(personCreateDto));
-    }
-    @GetMapping
-    public Page<PersonFindDto> listPerson(Pageable paginacion){
-        //return personRepository.findAll(paginacion).map(PersonFindDto::new);
-        return personRepository.findByIsActiveTrue(paginacion).map(PersonFindDto::new);
+    public ResponseEntity<PersonResponseDto> createPerson(
+            @RequestBody @Valid PersonCreateDto personCreateDto,
+            UriComponentsBuilder uriComponentsBuilder) {
+        Person person = personRepository.save(new Person(personCreateDto));
+        PersonResponseDto response = new PersonResponseDto(person.getId(), person.getName(), person.getLastName(), person.getPhone(), person.getBirthday());
+        URI url = uriComponentsBuilder.path("/person/{id}").buildAndExpand(person.getId()).toUri();
+        return ResponseEntity.created(url).body(response);
     }
 
     /*
@@ -37,11 +41,26 @@ public class PersonController {
     }
     */
 
+    @GetMapping
+    public ResponseEntity<Page<PersonFindDto>> listPerson(Pageable paginacion) {
+        //return personRepository.findAll(paginacion).map(PersonFindDto::new);
+        return ResponseEntity.ok(personRepository.findByIsActiveTrue(paginacion).map(PersonFindDto::new));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PersonResponseDto> findPerson(@PathVariable int id) {
+        Person person = personRepository.getReferenceById(id);
+        PersonResponseDto response = new PersonResponseDto(person.getId(), person.getName(), person.getLastName(), person.getPhone(), person.getBirthday());
+        return ResponseEntity.ok(response);
+    }
+
     @PutMapping
     @Transactional
-    public void updatePerson (@RequestBody @Valid PersonUpdateDto personUpdateDto){
+    public ResponseEntity<PersonResponseDto> updatePerson(@RequestBody @Valid PersonUpdateDto personUpdateDto) {
         Person person = personRepository.getReferenceById(personUpdateDto.id());
         person.update(personUpdateDto);
+        PersonResponseDto response = new PersonResponseDto(person.getId(), person.getName(), person.getLastName(), person.getPhone(), person.getBirthday());
+        return ResponseEntity.ok(response);
     }
 
     /*
@@ -56,8 +75,9 @@ public class PersonController {
 
     @DeleteMapping("/{id}") // Delete lógico
     @Transactional
-    public void deletePerson (@PathVariable int id){
+    public ResponseEntity deletePerson(@PathVariable int id) {
         Person person = personRepository.getReferenceById(id);
-        person.deactivate();
+        person.inactivate();
+        return ResponseEntity.noContent().build();
     }
 }
