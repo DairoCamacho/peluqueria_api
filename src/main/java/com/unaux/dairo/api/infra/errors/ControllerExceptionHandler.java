@@ -1,4 +1,4 @@
-package com.unaux.dairo.api.infra;
+package com.unaux.dairo.api.infra.errors;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
